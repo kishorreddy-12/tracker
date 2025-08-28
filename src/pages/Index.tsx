@@ -33,19 +33,19 @@ const Index = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-glow rounded-xl p-6 shadow-card">
-        <h1 className="text-3xl font-bold text-primary-foreground mb-2">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header - Mobile Optimized */}
+      <div className="bg-gradient-to-r from-primary to-primary-glow rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-card">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-foreground mb-2">
           Welcome back, Srinivas! 🌱
         </h1>
-        <p className="text-primary-foreground/80 text-lg">
+        <p className="text-primary-foreground/80 text-sm sm:text-base md:text-lg">
           Here's an overview of your seed organization activities
         </p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Stats Cards - Mobile Optimized */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatsCard
           title="Total Season Amount"
           value={formatCurrency(stats?.totalAmount || 0)}
@@ -75,11 +75,11 @@ const Index = () => {
       {/* Analytics Charts */}
       <SpendingChart />
 
-      {/* Recent Activity Summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Recent Activity Summary - Mobile Optimized */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Payment Purposes */}
-        <div className="bg-card rounded-xl p-6 shadow-card">
-          <h3 className="text-lg font-semibold text-primary mb-4">Payment Breakdown</h3>
+        <div className="bg-card rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-card">
+          <h3 className="text-base sm:text-lg font-semibold text-primary mb-3 sm:mb-4">Payment Breakdown</h3>
           {stats?.purposeStats && Object.keys(stats.purposeStats).length > 0 ? (
             <div className="space-y-3">
               {Object.entries(stats.purposeStats)
@@ -98,8 +98,8 @@ const Index = () => {
         </div>
 
         {/* Payment Modes */}
-        <div className="bg-card rounded-xl p-6 shadow-card">
-          <h3 className="text-lg font-semibold text-primary mb-4">Payment Methods</h3>
+        <div className="bg-card rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-card">
+          <h3 className="text-base sm:text-lg font-semibold text-primary mb-3 sm:mb-4">Payment Methods</h3>
           {stats?.modeStats && Object.keys(stats.modeStats).length > 0 ? (
             <div className="space-y-3">
               {Object.entries(stats.modeStats)

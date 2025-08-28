@@ -93,21 +93,21 @@ const AddPayment = () => {
   const showDetachingOption = selectedSuborganizer?.crop_type === "Maize";
 
   return (
-    <div className="p-6 max-w-2xl mx-auto space-y-6">
+    <div className="max-w-2xl mx-auto space-y-4 sm:space-y-6">
       <div className="text-center">
-        <div className="bg-gradient-primary rounded-xl p-6 shadow-card mb-6">
-          <CreditCard className="h-12 w-12 text-primary-foreground mx-auto mb-3" />
-          <h1 className="text-3xl font-bold text-primary-foreground">Record Payment</h1>
-          <p className="text-primary-foreground/80">Log a new payment to suborganizer</p>
+        <div className="bg-gradient-to-r from-primary to-primary/90 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-card">
+          <CreditCard className="h-10 w-10 sm:h-12 sm:w-12 text-primary-foreground mx-auto mb-3" />
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-foreground">Record Payment</h1>
+          <p className="text-primary-foreground/80 text-sm sm:text-base">Log a new payment to suborganizer</p>
         </div>
       </div>
 
-      <Card className="shadow-card">
-        <CardHeader>
-          <CardTitle className="text-xl text-primary">Payment Details</CardTitle>
+      <Card className="shadow-lg border">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl text-primary">Payment Details</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {/* Suborganizer Selection */}
             <div className="space-y-2">
               <Label htmlFor="suborganizer">Suborganizer *</Label>
@@ -125,7 +125,7 @@ const AddPayment = () => {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Date */}
               <div className="space-y-2">
                 <Label htmlFor="date">Date *</Label>
@@ -152,7 +152,7 @@ const AddPayment = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Purpose */}
               <div className="space-y-2">
                 <Label htmlFor="purpose">Purpose *</Label>
@@ -191,7 +191,7 @@ const AddPayment = () => {
             </div>
 
             {/* Image Uploads */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <ImageUpload
                 label="Bill/Receipt Upload"
                 onImageUploaded={(url) => setFormData(prev => ({ ...prev, bill_receipt_url: url }))}

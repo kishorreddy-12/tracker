@@ -95,13 +95,13 @@ const Suborganizers = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Header with Stats */}
-      <div className="space-y-4">
-        <div className="flex justify-between items-center">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header with Stats - Mobile Optimized */}
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <div>
-            <h1 className="text-3xl font-bold text-primary">Suborganizers</h1>
-            <p className="text-muted-foreground">Manage your suborganizer network and view payment history</p>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">Suborganizers</h1>
+            <p className="text-muted-foreground text-sm sm:text-base">Manage your suborganizer network and view payment history</p>
           </div>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

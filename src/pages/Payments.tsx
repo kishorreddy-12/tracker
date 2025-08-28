@@ -150,14 +150,14 @@ const Payments = () => {
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="bg-gradient-to-r from-primary to-primary/90 rounded-xl p-6 shadow-lg border">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <CreditCard className="h-8 w-8 text-primary-foreground" />
-            <div>
-              <h1 className="text-3xl font-bold text-primary-foreground">Payment History</h1>
-              <p className="text-primary-foreground/80">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="bg-gradient-to-r from-primary to-primary/90 rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <CreditCard className="h-6 w-6 sm:h-8 sm:w-8 text-primary-foreground flex-shrink-0" />
+            <div className="min-w-0">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-foreground">Payment History</h1>
+              <p className="text-primary-foreground/80 text-sm sm:text-base truncate">
                 {filteredPayments.length} payments • Total: {formatCurrency(totalAmount)}
               </p>
             </div>
@@ -167,7 +167,7 @@ const Payments = () => {
             size="sm"
             onClick={() => queryClient.invalidateQueries({ queryKey: ["payments"] })}
             disabled={isLoading}
-            className="bg-white/20 hover:bg-white/30 text-primary-foreground border-white/20"
+            className="bg-white/20 hover:bg-white/30 text-primary-foreground border-white/20 flex-shrink-0"
           >
             <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
           </Button>
@@ -182,8 +182,8 @@ const Payments = () => {
             Filters & Search
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <CardContent className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">Search</label>
               <div className="relative">
@@ -258,30 +258,29 @@ const Payments = () => {
       <div className="space-y-4">
         {filteredPayments.map((payment) => (
           <Card key={payment.id} className="shadow-lg border hover:shadow-xl transition-all duration-200">
-            <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-3 flex-1">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary">
-                        {formatCurrency(Number(payment.amount))}
-                      </h3>
-                      <div className="flex items-center gap-4 text-muted-foreground text-sm mt-1">
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          <span>{payment.suborganizer?.name}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          <span>{payment.suborganizer?.village}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{format(new Date(payment.date), "MMM d, yyyy")}</span>
-                        </div>
+            <CardContent className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2">
+                      {formatCurrency(Number(payment.amount))}
+                    </h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-muted-foreground text-sm">
+                      <div className="flex items-center gap-1 min-w-0">
+                        <User className="h-4 w-4 flex-shrink-0" />
+                        <span className="truncate">{payment.suborganizer?.name}</span>
+                      </div>
+                      <div className="flex items-center gap-1 min-w-0">
+                        <MapPin className="h-4 w-4 flex-shrink-0" />
+                        <span className="truncate">{payment.suborganizer?.village}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4 flex-shrink-0" />
+                        <span>{format(new Date(payment.date), "MMM d, yyyy")}</span>
                       </div>
                     </div>
                   </div>
+                </div>
 
                   <div className="flex flex-wrap gap-2">
                     <Badge className={getPurposeColor(payment.purpose)}>
