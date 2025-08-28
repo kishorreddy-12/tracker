@@ -348,7 +348,6 @@ const Payments = () => {
                       )}
                     </div>
                   )}
-                </div>
               </div>
             </CardContent>
           </Card>
